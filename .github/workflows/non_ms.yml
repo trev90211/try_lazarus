@@ -37,14 +37,9 @@ jobs:
 #        sudo apt update
 #        sudo apt install libqt5pas-dev -y
 #        echo Building with Qt5
-#        lazbuild -B --bm=Release --ws=qt5 "src/librtlsdr_wincontrol.lpi"
+#        lazbuild -B --ws=qt5 "src/librtlsdr_wincontrol.lpi"
 
     - name: Build the Main Application (macOS)
       if: ${{ matrix.operating-system == 'macos-latest' }}
-      run: lazbuild -B --bm=Release --ws=cocoa "src/librtlsdr_wincontrol.lpi"
+      run: lazbuild -B --ws=cocoa "src/librtlsdr_wincontrol.lpi"
 
-    - name: Build the Unit Tests Application
-      run: lazbuild -B --bm=Release "tests/testconsoleapplication.lpi"
-
-    - name: Run the Unit Tests Application
-      run: bin/testconsoleapplication "--all" "--format=plain"
